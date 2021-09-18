@@ -16,7 +16,7 @@ else
 
     INSTALL_DIR=$BASE_DIR/mandelbrot-distributed
     cd $INSTALL_DIR
-    python3 -m venv .env
+    python3 -m venv .venv
     source .env/bin/activate
     pip3 install -r requirements.txt
 fi
