@@ -69,7 +69,7 @@ def main():
         taskConvertion = "nice -10 convert {0}.bmp {0}.jpg && rm -f {0}.bmp".format(imageFile)
         aReturnCodeConvertion = os.waitstatus_to_exitcode(os.system(taskConvertion))
         
-        ## Send the resulting image file to the storage server
+        ## Send the resulting image file to the storage server and remove it locally
         host = "garage.local"
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -79,6 +79,7 @@ def main():
         aRemotePath = "{0}/{1}.jpg".format(targetDirectory, imageFile)
         sftp.put(localpath=aLocalPath, remotepath=aRemotePath)
         ssh.close()
+        os.remove(aLocalPath)
 
         ## Successfully dequeue the task from the job Queue 
         if aReturnCodeMandelbrot == 0 and aReturnCodeConvertion == 0:
@@ -92,9 +93,6 @@ def main():
 
     print(' [*] Waiting for messages. To exit press CTRL+C')
     channel.start_consuming()
-
-
-
 
 
 if __name__ == '__main__':
