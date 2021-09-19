@@ -33,7 +33,7 @@ else
     git clone https://github.com/LucChoubert/mandelbrot-distributed.git
 
     cd $INSTALL_DIR
-    python3 -m venv .venv
+    python3.9 -m venv .venv
     source .venv/bin/activate
     pip3 install -r requirements.txt
 
