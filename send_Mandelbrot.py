@@ -81,6 +81,7 @@ print(command)
 print(stdout.readlines())
 print("Movie generated")
 
+## Server side check and possible cleanup of the directory if no file
 command = "ls {0}".format(targetDirectory)
 stdin, stdout, stderr = ssh2.exec_command(command)
 lines = stdout.readlines()
@@ -98,6 +99,7 @@ if not lines:
     command = "rmdir {0}".format(targetDirectory)
     ssh2.exec_command(command)
     print("No image file generated, cleaning up directory")
+
 
 #Workaround to avoid unexpected exception when closing the ssh connection
 time.sleep(5)
