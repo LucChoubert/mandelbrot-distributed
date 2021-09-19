@@ -58,7 +58,8 @@ def main():
         ## Run the task received, a Mandelbrot generation
         t = Timer()
         t.start()
-        aReturnCodeMandelbrot = os.waitstatus_to_exitcode(os.system("nice -10 "+taskMandelbrot))
+        # Adding the hardcoded path as a workaround. TOBEREMOVED
+        aReturnCodeMandelbrot = os.waitstatus_to_exitcode(os.system("nice -10 /home/luc/.local/bin/"+taskMandelbrot))
         #aReturnCodeMandelbrot = os.WEXITSTATUS(os.system(taskMandelbrot))
         t.stop()
         processing_time = t.getElapsed_time()
