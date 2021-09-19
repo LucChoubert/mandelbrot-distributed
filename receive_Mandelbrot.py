@@ -45,7 +45,9 @@ class Timer:
 def main():
     ## Connect to the Job Queue RabbitMq instance to 
     credentials = pika.PlainCredentials('mandelbrot', 'benoit')
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='garage.local',virtual_host='MandelbrotGenerator',credentials=credentials))
+    ## Below line commented and replace by ip adress as garage2 has a problem with mDNS - TOBEREMOVED
+    # connection = pika.BlockingConnection(pika.ConnectionParameters(host='garage.local',virtual_host='MandelbrotGenerator',credentials=credentials))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='192.168.1.10',virtual_host='MandelbrotGenerator',credentials=credentials))
     channel = connection.channel()
 
     channel.queue_declare(queue='task')
