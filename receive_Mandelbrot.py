@@ -73,7 +73,9 @@ def main():
         aReturnCodeConvertion = os.waitstatus_to_exitcode(os.system(taskConvertion))
         
         ## Send the resulting image file to the storage server and remove it locally
-        host = "garage.local"
+        ## Below line commented and replace by ip adress as garage2 has a problem with mDNS - TOBEREMOVED
+        #host = "garage.local"
+        host = "192.168.1.10"
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(hostname = host)
