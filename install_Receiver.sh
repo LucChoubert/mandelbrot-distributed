@@ -10,6 +10,7 @@ if [ "$HOSTNAME" = "Luc-Ubuntu" ]; then
 else
     echo "## Running deployment on $HOSTNAME ##"
     pkill -f receive_Mandelbrot.py
+    pkill -f Mandelbrot
 
     BASE_DIR=$HOME/AUTOMATION
     mkdir -p $BASE_DIR
